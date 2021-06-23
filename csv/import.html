@@ -11,22 +11,14 @@
         </label>
         <div class="selected-file no-active" id="js-selected-file">
         </div>
+		
     </div>
-	<input type="submit" id="submit-btn" value="їэ">
+	<label for="submit-btn" id="submit-button">
+		インポート
+		<input type="submit" id="submit-btn" value="送信">
+	</label>
     </form>
 </div>
-
-
-<!--<body>
-    <form action="" method="POST" enctype="multipart/form-data">
-        <div id="uploadArea" class="upload-area">
-            <i class="fas fa-cloud-upload-alt"></i>
-            <p>Drag and drop a file or click</p>
-            <input type="file" name="fileupload" value="upload">
-        </div>
-        <input type="submit" id="submit-btn" value="їэ">
-    </form>
-</body>-->
 
 <style>
 .no-active {
@@ -83,6 +75,31 @@ input {
 
 .select-file::hover {
     background-color: #136EB6;
+}
+
+#submit-button {
+    font-weight: bold;
+	margin: 20px 0 0 auto;
+    border-radius: 3px;
+    width: 80px;
+    height: 20px;
+    background-color: rgba(108, 168, 255, .7);
+    border: none;
+    box-shadow: 0 5px 0 rgba(0, 0, 0, 0.6);
+    opacity: .6;
+    cursor: pointer;
+	display: inline-block;
+    padding: 25px 40px;
+    z-index: 1;
+	margin-left: 80%;
+}
+#submit-button:hover {
+    background-color: rgba(108, 168, 255, 1.0);
+}
+#submit-button:active {
+    position: relative;
+    top: 5px;
+    box-shadow: none;
 }
 </style>
 
