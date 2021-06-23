@@ -1,0 +1,131 @@
+<div class="container">
+	<form action="" method="POST" enctype="multipart/form-data">
+    <div class="drop-zone" id="js-dropzone">
+        <div class="overlay-area" id="js-overlay-area">
+            <p class="no-active" id="js-overlay-text">ここにドラッグ&ドロップしてください。</p>
+        </div>
+        <p class="drop-zone-text">ファイルを選択するか、ドラッグ&ドロップしてください。</p>
+        <label for="file_upload" class="select-file" id="js-select-file">
+            ファイルを選択してください
+            <input type="file" id="file_upload">
+        </label>
+        <div class="selected-file no-active" id="js-selected-file">
+        </div>
+    </div>
+	<input type="submit" id="submit-btn" value="їэ">
+    </form>
+</div>
+
+
+<!--<body>
+    <form action="" method="POST" enctype="multipart/form-data">
+        <div id="uploadArea" class="upload-area">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Drag and drop a file or click</p>
+            <input type="file" name="fileupload" value="upload">
+        </div>
+        <input type="submit" id="submit-btn" value="їэ">
+    </form>
+</body>-->
+
+<style>
+.no-active {
+   display: none;
+}
+.drop-zone {
+   position: relative;
+    width: 1000px;
+    height: 700px;
+    margin: 0 auto;
+    background-color: #eeeeee;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;  
+}
+
+.drop-zone-text {
+    padding: 50px 0px;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.75);
+    opacity: 0.8;
+    z-index: 100;
+}
+
+.overlay-text {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 33%;
+    color: #F7F7F7;
+}
+
+input {
+    display: none;
+}
+
+.select-file {
+    display: inline-block;
+    margin: 40px auto;
+    padding: 25px 40px;
+    width: 400px;
+    background-color: #1AA1FF;
+    border-radius: 5px;
+    color: #F7F7F7;
+    cursor: pointer;
+    font-weight: 700;
+    z-index: 1;
+}
+
+.select-file::hover {
+    background-color: #136EB6;
+}
+</style>
+
+<script>
+const dropzone = document.getElementById('js-dropzone');
+const overlayText = document.getElementById('js-overlay-text');
+const overlayArea = document.getElementById('js-overlay-area');
+const fileInput = document.getElementById('file_upload');
+const selectedFile = document.getElementById('js-selected-file');
+
+// ドロップ可能エリアに入った時
+dropzone.addEventListener('dragenter', () => {
+    overlayArea.classList.add('overlay');
+    overlayText.classList.add('overlay-text');
+    overlayText.classList.remove('no-active');
+});
+
+// ドロップ可能エリアを出た時
+overlayArea.addEventListener('dragleave', () => {
+    overlayArea.classList.remove('overlay');
+    overlayText.classList.remove('overlay-text');
+    overlayText.classList.add('no-active');
+});
+
+// ドロップ可能エリアにカーソルがある時
+overlayArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+});
+
+// ファイルをドロップした時
+overlayArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    var fileName = e.dataTransfer.files[0].name;
+    selectedFile.innerText = fileName;
+    selectedFile.classList.remove('no-active');
+    overlayArea.classList.remove('overlay');
+    overlayText.classList.remove('overlay-text');
+    overlayText.classList.add('no-active');
+});
+
+fileInput.addEventListener('change', () => {
+    var fileName = fileInput.files[0].name;
+    selectedFile.classList.remove('no-active');
+    selectedFile.innerText = fileName;
+});
+</script>
